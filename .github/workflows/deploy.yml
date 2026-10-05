@@ -29,8 +29,11 @@ jobs:
       - run: npm ci
       - run: npm run build
       - uses: actions/configure-pages@v5
+        if: ${{ !github.event.repository.private }}
       - uses: actions/upload-pages-artifact@v3
+        if: ${{ !github.event.repository.private }}
         with:
           path: docs/.vitepress/dist
       - id: deployment
         uses: actions/deploy-pages@v4
+        if: ${{ !github.event.repository.private }}
