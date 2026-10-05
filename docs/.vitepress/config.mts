@@ -1,16 +1,19 @@
 import { defineConfig } from 'vitepress'
 
+// GitHub Pages serves under the repository path; Cloudflare Pages serves at root.
+const base = process.env.GITHUB_ACTIONS ? '/docs-nemo-waves/' : '/'
+
 export default defineConfig({
   title: 'Nemo Waves',
   description: 'Brief Phase 0 cho Content Factory Platform của Nemo12',
   lang: 'vi-VN',
-  base: '/docs-nemo-waves/',
+  base,
   cleanUrls: true,
   lastUpdated: true,
   srcExclude: ['README.md'],
   head: [
     ['meta', { name: 'theme-color', content: '#083B66' }],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/docs-nemo-waves/favicon.svg' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }]
   ],
   themeConfig: {
     logo: '/favicon.svg',
